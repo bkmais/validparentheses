@@ -56,12 +56,11 @@ func isValid(s string) bool {
 	if len(s) == 0 {
 		return true
 	} else {
-		i := 0
+
 		for _, ch := range s {
 			// Unicode 123, 125 is {}; 40,41 is (); 91,93 is []
 			if ch == 123 || ch == 91 || ch == 40 {
 				obj.Push(string(ch))
-				i++
 			} else {
 				//encountered closing at first
 				if len(obj.vStack) == 0 {
@@ -74,7 +73,6 @@ func isValid(s string) bool {
 						fmt.Println("Popped this guy:")
 						fmt.Println(obj.Top())
 						obj.Pop()
-						i--
 					} else {
 						return false
 					}
